@@ -18,23 +18,27 @@ import urllib.request
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "sounds"
 API = "https://api.elevenlabs.io/v1/sound-generation?output_format=mp3_44100_128"
-CLEAN = "Isolated single sound effect for a video game. No music, no voices, no background ambience."
+CLEAN = (
+    "Close-miked, dry and punchy, loud and clear, starts immediately and ends in silence. "
+    "Single isolated sound effect for a video game. No music, no voices unless described, no background ambience."
+)
 
 SOUNDS = {
-    "bounce": (0.5, "One basketball bounce on outdoor asphalt, a single short rubbery thud with a slight hollow ring."),
-    "rim": (0.6, "A basketball hitting a metal hoop rim once, a short bright metallic clank with a little rattle."),
-    "board": (0.5, "A basketball hitting a hard outdoor backboard once, a short dull wooden thump."),
-    "swish": (0.7, "A basketball dropping cleanly through a chain and rope net, one quick airy swish with a light net rustle."),
-    "score": (1.0, "A very small group of friends at a street court giving one short excited cheer and a clap."),
-    "whistle": (0.7, "A referee pea whistle, one short sharp blast."),
-    "steal": (0.5, "A quick hand slap on a basketball, one short sharp leather smack."),
-    "pass": (0.5, "Two hands catching a basketball, one soft quick leather pop."),
-    "block": (0.5, "A hard hand swat on a basketball in the air, one forceful leather slap with a whoosh."),
-    "perfect": (0.5, "A short bright retro arcade success chime, two rising 8-bit notes."),
-    "select": (0.5, "A tiny retro arcade menu blip, one soft 8-bit click."),
-    "blink": (0.5, "A short sci-fi alien teleport sound, one quick rising shimmer with a soft pop."),
-    "fire": (0.6, "A quick burst of fire whooshing past, one short flaming fireball swoosh."),
-    "win": (1.8, "A small street court crowd cheering and clapping in celebration, then quickly fading out."),
+    "bounce": (0.5, "A leather basketball bouncing once on hard outdoor concrete: a firm low rubbery thump with a short hollow ping."),
+    "rim": (0.8, "A basketball slamming into a steel basketball rim: one hard metallic clang with a brief ringing vibration."),
+    "board": (0.6, "A basketball banging against a wooden outdoor backboard: one solid resonant wooden thud with a slight metal rattle."),
+    "swish": (0.8, "A basketball dropping cleanly through a nylon net: one crisp fast swish of rope, very airy, the classic nothing-but-net sound."),
+    "score": (1.2, "A few friends at an outdoor court shouting one short excited yeah together, with two quick claps."),
+    "whistle": (0.8, "A referee's metal pea whistle: one loud sharp piercing blast with a fast trill."),
+    "steal": (0.5, "A hand swiping a basketball away: one sharp loud leather slap followed by a tiny whoosh."),
+    "pass": (0.5, "A chest pass caught in two hands: one quick firm leather smack, no echo."),
+    "block": (0.6, "A big volleyball-style spike swat on a basketball: one very hard explosive leather slap with a heavy whoosh."),
+    "perfect": (0.7, "A bright arcade power-up chime: two quick rising square wave notes with a sparkle, chiptune style."),
+    "select": (0.5, "A crisp retro game menu confirm blip: one short square wave beep, 8-bit, clean."),
+    "blink": (0.7, "A sci-fi alien teleport: a fast rising electronic warble that ends with a bright zap and pop."),
+    "fire": (0.8, "A fireball launched through the air: one fast roaring flame whoosh with crackling embers."),
+    "clunk": (0.5, "A chunky mechanical button pressed on a 1980s portable cassette player: one short plastic clunk with a tiny spring click."),
+    "win": (2.5, "A small excited street court crowd erupting in cheers, whistles and applause for two seconds, then fading out."),
 }
 
 
@@ -42,7 +46,7 @@ def generate(name, duration, prompt, key):
     body = json.dumps({
         "text": f"{prompt} {CLEAN}",
         "duration_seconds": duration,
-        "prompt_influence": 0.7,
+        "prompt_influence": 0.85,
         "model_id": "eleven_text_to_sound_v2",
     }).encode()
     req = urllib.request.Request(API, data=body, headers={

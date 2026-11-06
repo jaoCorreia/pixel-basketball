@@ -21,7 +21,9 @@ Você (camisa vermelha) e o parceiro de amarelo enfrentam um adversário por are
 | Pular para tocar a bola (na defesa) | Espaço | Botão vermelho |
 | Passar, pedir a bola ou roubar | E ou J | Botão azul |
 | Pausar | P ou Esc | Botão II |
-| Ligar ou desligar o som | M | — |
+| Ligar ou desligar os efeitos | M | — |
+| Tocar ou parar a trilha | T | Walkman |
+| Faixa anterior ou próxima | [ e ] | Walkman |
 
 ## Regras
 
@@ -31,6 +33,10 @@ Você (camisa vermelha) e o parceiro de amarelo enfrentam um adversário por are
 - A marcação próxima piora o arremesso, e o tempo de soltar pesa mais que a distância.
 
 Na tela de título, escolha a arena com ↑ e ↓ e a dificuldade com ← e →.
+
+## Trilha
+
+A trilha começa desligada e é controlada pelo walkman: voltar, play, avançar, parar e a roda de volume na lateral. Coloque a música em `music/trilha.mp3`. Para ter mais faixas, adicione os arquivos em `music/` e liste-os em `TRACKS`, no `index.html`.
 
 ## Sons
 
